@@ -36,13 +36,13 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Card from 'react-bootstrap/Card'
 import { AccountBox, AddAlert, Home } from '@material-ui/icons';
-import  Subscriptions from './Subscriptions';
 import UserHeader from '../StudentP/UserHeader'
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
+import Table from './Subscriptionstable';
 
 const theme =createMuiTheme({
   palette:{
@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    paddingTop: theme.spacing(10),
+    paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(10),
   },
   
@@ -343,21 +343,20 @@ export default function AccSTsubscriptions() {
 
       <main className={classes.content}>
       <div className={classes.appBarSpacer} />
-         <Container style={{width:'700px'}} className={classes.container}>
+
+        <Container style={{width:'900px'}} className={classes.container}>
           <Grid container >
           
-            {/* list of uploaded videos */}
-            <Grid item xs={12} lg={12}>
+           {/* list of uploaded videos */}
+             <Grid item xs={12} lg={12}>
               <Paper className={classes.paper}>
 
-
-              <Subscriptions/>
-
+              <Table/>
 
               </Paper>
             </Grid>
             </Grid>   
-        </Container>
+        </Container> 
       </main>
     </div> 
   </MuiThemeProvider> 

@@ -22,7 +22,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { teal, green, cyan, indigo, grey, blueGrey,  } from '@material-ui/core/colors';
 import {MuiThemeProvider , createMuiTheme, ListItemAvatar} from '@material-ui/core';
 import ExitToApp from '@material-ui/icons/ExitToApp';
-import '../../UserProfile/StudentP/AccST.css';
+import '../../UserProfile/TeacherP/AccTCR.css';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -34,17 +34,16 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
-//import AlignItemsList from './App'
-//import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardUp, MDBCardBody, MDBIcon } from "mdbreact";
-//import Card from 'react-bootstrap/Card'
-import { AccountBox, AddAlert, Home } from '@material-ui/icons';
+import Card from 'react-bootstrap/Card'
+import { AccountBox, AddBox, AssignmentTurnedIn} from '@material-ui/icons';
 import UserHeader from '../StudentP/UserHeader'
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
-import  Table from './Menutable';
+import Table from './Publishedtable';
+import Addnew from './Addnew';
 
 const theme =createMuiTheme({
   palette:{
@@ -59,6 +58,15 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
 
+
+  rooot: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
   root: {
     display: 'flex',
     
@@ -66,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
   
   toolbar: {
-    paddingRight: 2, // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: 'flex',
@@ -139,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   
   paper: {
     padding: theme.spacing(2),
-    maxHeight : '720px',    
+    maxHeight : '520px',    
     overflow: 'auto',
     flexDirection: 'column',
   },
@@ -187,8 +195,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-export default function AccSTmenu() {
+export default function AccTCRaddnew() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -198,19 +205,21 @@ export default function AccSTmenu() {
     setOpen(false);
   };
 
- 
+
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
  
   return (
     <div>
     <UserHeader />
     <div className="background">
-     
+
+
  {/* Top bar */}  
 
   <MuiThemeProvider theme={theme} >
      
-   <div className={classes.root} >
-     
+   <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={clsx(classes.toolbar )}>
@@ -225,26 +234,13 @@ export default function AccSTmenu() {
 
           </IconButton>
           <Typography component="h1" variant="h5" color="inherit" noWrap className={(classes.title)} style={{fontWeight:'Bold'}}>
-            STUDENT PROFILE
+            TEACHER PROFILE
           </Typography>
 
-          {/* 
 
-          Default:-
-
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon/>
-            </Badge>
-          </IconButton>
-          <IconButton color="inherit">
-            <Avatar style={{backgroundColor:'#1a237e'}}  />
-          </IconButton> 
-
-          */}
-
-       {/* Search Bar */}
-         <div className={classes.search}>            
+         
+{/* Search Bar */}
+       <div className={classes.search}>            
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -256,12 +252,16 @@ export default function AccSTmenu() {
               }}/>
           </div>
 
+
         </Toolbar>
       </AppBar>
       
+
+
 {/* Drawer */}
 
       <Drawer
+        
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -295,14 +295,14 @@ export default function AccSTmenu() {
               </Avatar>
         </ListItem>   
 
-        
+  <Link style={{color:"black", textDecoration:"none"}} to="./AccTCRpublished"> 
     <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < Home />
+        <AssignmentTurnedIn/>
       </ListItemIcon>
-      <ListItemText primary="Main Menu" />
+      <ListItemText style={{color:"white"}} primary="My tutorials" />
     </ListItem>
-       
+   </Link>
     
     {/*
     <ListItem button>
@@ -313,52 +313,43 @@ export default function AccSTmenu() {
     </ListItem>
     */}
 
-  <Link style={{color:"black", textDecoration:"none"}} to="./AccSTsubscriptions">
-  <ListItem button>
+    <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AddAlert />
+        < AddBox />
       </ListItemIcon>
-      <ListItemText style={{color:"white"}} primary="Subscriptions" />
+      <ListItemText style={{color:"white"}} primary="Add a new tutorial" />
     </ListItem>
-    </Link>
-
-
-
-        </List>
+    
+    
+    
+      </List>
     </Drawer> 
 
-
-
-
-
+    
 
 {/*Content box*/}
 
       <main className={classes.content}>
       <div className={classes.appBarSpacer} />
-         <Container style={{width:'1000px'}} className={classes.container}>
+
+        <Container style={{width:'500px'}} className={classes.container}>
           <Grid container >
           
-            {/* list of uploaded videos */}
-            <Grid item xs={12} lg={12}>
+           {/* list of uploaded videos */}
+             <Grid item xs={12} lg={12}>
               <Paper className={classes.paper}>
 
-
-              <Table/>
-
+              <Addnew/>
 
               </Paper>
             </Grid>
             </Grid>   
-        </Container>
+        </Container> 
       </main>
-     
     </div> 
   </MuiThemeProvider> 
 </div>
 <Footer />
-</div>
-            
+   </div>         
   );
 }
-

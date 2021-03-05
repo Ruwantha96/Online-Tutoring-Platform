@@ -5,8 +5,10 @@ import TeacherR from './components/Register/TeacherR';
 import StudentR2 from './components/Register/StudentR2';
 import AccSTmenu from './components/UserProfile/StudentP/AccSTmenu';
 import AccSTsubscriptions from './components/UserProfile/StudentP/AccSTsubscriptions';
-import About from './components/About/About'
-import Contact from './components/Contact/Contact'
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import AccTCRaddnew from './components/UserProfile/TeacherP/AccTCRaddnew';
+import AccTCRpublished from './components/UserProfile/TeacherP/AccTCRpublished';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path="/home"  component={Home} />
             <Route path="/about"  component={About} />
             <Route path="/contact"  component={ Contact} />
+            <Route path='/AccTCRaddnew'  component={AccTCRaddnew} />
+            <Route path='/AccTCRpublished'  component={AccTCRpublished} />
 
 
        </Switch>
