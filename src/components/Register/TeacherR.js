@@ -133,5 +133,27 @@ resetForm(){
   this.setState({name: '', email: '', message: '', phone: '', address: ''})
 }
 
+createTeacher() {
+  fetch("http://localhost:49238/api/teachers", {
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+      "accept": "application/json"
+    },
+    "body": JSON.stringify({
+      Name:  this.state.name,
+      username:  this.state.name,
+      password:  this.state.password,
+      class: null
+    })
+  })
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
 }
 export default RegisterTea;
