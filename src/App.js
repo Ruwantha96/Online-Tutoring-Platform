@@ -6,6 +6,7 @@ import StudentR2 from './components/Register/StudentR2';
 import AccSTmenu from './components/UserProfile/StudentP/AccSTmenu';
 import AccSTsubscriptions from './components/UserProfile/StudentP/AccSTsubscriptions';
 import About from './components/About/About';
+import Institute from './components/Institute/Institute';
 import Contact from './components/Contact/Contact';
 import AccTCRaddnew from './components/UserProfile/TeacherP/AccTCRaddnew';
 import AccTCRpublished from './components/UserProfile/TeacherP/AccTCRpublished';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/accSTmenu"  component={AccSTmenu} />
             <Route path="/home"  component={Home} />
             <Route path="/about"  component={About} />
+            <Route path="/institute"  component={Institute} />
             <Route path="/contact"  component={ Contact} />
             <Route path='/AccTCRaddnew'  component={AccTCRaddnew} />
             <Route path='/AccTCRpublished'  component={AccTCRpublished} />
