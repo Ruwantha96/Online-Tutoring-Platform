@@ -43,6 +43,7 @@ import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import Table from './Publishedtable';
+import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -195,7 +196,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AccTCRpublished() {
-  const classes = useStyles()
+  var f = localStorage.getItem('FirstName');
+  var l = localStorage.getItem('LastName');
+  var fn = f+" "+l;
+  debugger
+  const [fullName, setFullName] = React.useState(fn);
+  const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -210,6 +216,8 @@ export default function AccTCRpublished() {
  
   return (
     <div>
+      <Font family='Roboto'>
+
     <UserHeader />
     <div className="background">
 
@@ -238,7 +246,7 @@ export default function AccTCRpublished() {
 
          
        {/* Search Bar */}
-       <div className={classes.search}>            
+       {/* <div className={classes.search}>            
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -248,7 +256,7 @@ export default function AccTCRpublished() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}/>
-          </div>
+          </div> */}
 
 
         </Toolbar>
@@ -278,9 +286,9 @@ export default function AccTCRpublished() {
 
       <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AccountBox />
+        <AccountBox />
       </ListItemIcon>
-      <ListItemText primary="Manoj Amarasinghe" />
+      <ListItemText primary={fullName} />
       </ListItem>
     
         <ListItem Avatar>
@@ -295,7 +303,7 @@ export default function AccTCRpublished() {
  
     <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AssignmentTurnedIn />
+        <AssignmentTurnedIn />
       </ListItemIcon>
       <ListItemText style={{color:"white"}} primary="My tutorials" />
     </ListItem>
@@ -315,6 +323,14 @@ export default function AccTCRpublished() {
              <AddBox/>
         </ListItemIcon>
           <ListItemText style={{color:"white"}} primary="Add a new tutorial" />
+        </ListItem>
+ </Link> 
+   <Link style={{color:"black", textDecoration:"none"}} to="./AccTCRaddquiz"> 
+        <ListItem button>
+          <ListItemIcon style={{color:"white"}}>
+             <AddBox/>
+        </ListItemIcon>
+          <ListItemText style={{color:"white"}} primary="Add Quiz" />
         </ListItem>
  </Link> 
 
@@ -347,6 +363,7 @@ export default function AccTCRpublished() {
   </MuiThemeProvider> 
 </div>
 <Footer />
+</Font>
    </div>         
   );
 }

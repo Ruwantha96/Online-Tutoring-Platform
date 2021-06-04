@@ -7,13 +7,13 @@ import '../Contact/Contact.css'
 import Header from '../Header/Header'
 import NavBar from '../NavigationBar/NavBar'
 import Footer from '../Footer/Footer';
+import Image from '../../images/w.jpg'
 
 const useStyles = makeStyles((theme) => ({
   
   Contact: {
     position: 'relative',
-    backgroundColor: '#c5cae9',
-    color: theme.palette.common.white,
+    backgroundImage: `url(${Image})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -42,8 +42,7 @@ export default function Contact() {
         <NavBar />
    
     <Paper className={classes.Contact}>
-      
-      <div className={classes.overlay} />
+    
       <Grid container >
       <div className="container contact-form">
             <div className="contact-image">

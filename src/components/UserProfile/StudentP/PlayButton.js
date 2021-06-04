@@ -7,17 +7,13 @@ import './modal.css';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-
-
-
-export default function PlayButton() {
+export default function PlayButton(props) {
   const [show, setShow] = useState(false);
-
   return (
     <>
       <Button variant="outline-primary"  className="playbutton" onClick={() => setShow(true)}>
       <ListItemIcon style={{marginLeft:'0px', marginTop:'-4px'}} size="sm">
-        < PlayCircleFilled/>
+        <PlayCircleFilled/>
       </ListItemIcon>
       </Button>
 
@@ -43,7 +39,7 @@ export default function PlayButton() {
 
         <Modal.Body>
           <p>
-          <MyPlayer style={{marginLeft:"10px"}}/>
+          <MyPlayer src={props.path} style={{marginLeft:"10px"}}/>
           </p>
         </Modal.Body>
       </Modal>

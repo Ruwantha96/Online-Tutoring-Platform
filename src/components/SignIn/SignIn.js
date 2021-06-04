@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,7 +12,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import axios from 'axios';
+import  { useHistory , Redirect ,Link} from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -62,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
 
   const classes = useStyles();
+  const history = useHistory();
 
   const [open, setOpen] = React.useState(false);
 
@@ -72,9 +75,47 @@ export default function SignIn() {
     setOpen(false);
   };
 
+  const [email, setEmail] =  useState("");
+  const [password, setPassword] =  useState("");
+  const [errorMessage, setErrorMessage] =  useState("");
+
+  const onSubmit = (async(e) => {
+    e.preventDefault();
+    const postData = {
+      email,
+      password
+    };
+      await axios.post('https://localhost:44319/api/Accounts/login', postData)
+    .then((res) => {
+      debugger
+      if(res.data.role == "Teacher"){
+        // <a style={{ color: "black", textDecoration: "none" }} to="./accSTmenu" />
+        // return <Redirect to='/accSTmenu'  />
+        localStorage.setItem('UserId', res.data.id);
+        localStorage.setItem('FirstName', res.data.firstName);
+        localStorage.setItem('LastName', res.data.lastName);
+        history.push("/AccTCRaddnew");
+      }else if(res.data.role == "Student"){
+        localStorage.setItem('UserIdStd', res.data.id);
+        localStorage.setItem('FirstName', res.data.firstName);
+        localStorage.setItem('LastName', res.data.lastName);
+        // <Link style={{ color: "black", textDecoration: "none" }} to="/accSTmenu">
+        // </Link>
+        // history.push("/accTECmenu");
+        history.push("/accSTmenu");
+      }else if(res.data == "EmailPasswordIncorrect"){
+        setErrorMessage("Email or Password is incorrect!");
+      }
+      debugger
+    }).catch((err) =>{
+      debugger
+      setErrorMessage(err.message);
+    });
+  });
+
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button type="submit" variant="contained" color="primary" onClick={handleClickOpen}>
         Login
       </Button>
       <Dialog open={open}>
@@ -93,33 +134,34 @@ export default function SignIn() {
         <Typography component="h1" variant="h5" color='primary'>
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="userName"
-            label="User Name"
-            name="userName"
-            
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
+        {errorMessage && <span style={{ color: "red", fontSize: "20px" }}>{errorMessage}</span>}
+        <form onSubmit={onSubmit} className={classes.form} noValidate>
+        <TextField
+               onChange={(e) =>{setEmail(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            <TextField
+               onChange={(e) =>{setPassword(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          <Link style={{color:"black", textDecoration:"none"}} to="/accSTmenu">
+         
           <Button
             type="submit"
             fullWidth
@@ -129,7 +171,7 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          </Link>
+       
 
           <Grid container justify="center">
             <Grid item>
@@ -146,6 +188,5 @@ export default function SignIn() {
       </Dialog>
      
     </div>
-    
   );
 }

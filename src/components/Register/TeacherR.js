@@ -1,159 +1,277 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import '../Contact/Contact.css'
-import Header from '../Header/Header'
-import NavBar from '../NavigationBar/NavBar'
-import Footer from '../Footer/Footer';
 import Image from '../../images/e.jpg'
-
-class RegisterTea extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      fName: '',
-      lName: '',
-      email: '',
-      phone: '',
-      address: '',
-      password: ''
-    }
-  }
-
-  render() {
-  return (
-
-    <div>
-         <Header />
-        <NavBar />
-   
-    <Paper >
-      
-      <div  />
-        <div >
-        <img src={Image} height="300px" width="100%"/>
-        </div>
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import NavBar from '../NavigationBar/NavBar';
+import axios from 'axios';
+import  { useHistory , Redirect} from 'react-router-dom'
 
 
-      <div className="col-lg-12  d-flex justify-content-center">
-      <div className="contact-image">
-                
-      </div>
-        <div className="justify-content-center col-lg-5 col-md-6 col-sm-12">
-        <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-                <h4 className="text-primary text-center m-5">Register as a Teacher</h4>
-               <div className="row">
-                    <div className="pb-5">
-                        <div className="d-flex col-12 justify-content-between">
-                          <div className="form-group float-left col-lg-6 col-sm-12 mb-3">
-                              <input type="text" name="txtFirstName"  className="form-control col-lg-11" placeholder="Your First Name *" value={this.state.fName} onChange={this.onFNameChange.bind(this)} />
-                          </div>
-                          <div className="form-group float-left col-lg-6 col-sm-12 mb-3">
-                              <input type="text" name="txtLastName" className="form-control col-lg-11" placeholder="Your Last Name *" value={this.state.lName} onChange={this.onLNameChange.bind(this)} />
-                          </div>
-                        </div>
-                        <div className="form-group mb-3">
-                            <input type="text" name="txtEmail" className="form-control" placeholder="Your Email Address*" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
-                        </div>
-                        <div className="form-group mb-3">
-                            <input type="text" name="txtPhone" className="form-control" placeholder="Your Phone Number *" value={this.state.phone} onChange={this.onPhoneChange.bind(this)} />
-                        </div>
-                        <div className="form-group mb-3">
-                            <input type="text" name="txtAddress" className="form-control" placeholder="Your Address *" value={this.state.address} onChange={this.onAddressChange.bind(this)} />
-                        </div>
-                        <div className="form-group mb-3">
-                            <input type="password" name="txtPassword" className="form-control" placeholder="Your Password *" value={this.state.password} onChange={this.onPasswordChange.bind(this)} />
-                        </div>
-                        <div className="form-group mb-2">
-                            <input type="submit" name="btnSubmit" className=" form-control bg-primary text-white mt-5  " value="SIGN UP" />
-                        </div>
-                        <p className="text-center text-primary ">Already have account? Sign in</p>
-                    </div>
-                </div>
-            </form>
-        </div>
-            
-      </div>
-    </Paper>
-    <Footer />
-    </div>
-  );
-}
-
-onFNameChange(event) {
-  this.setState({fName: event.target.value})
-}
-
-onLNameChange(event) {
-  this.setState({lName: event.target.value})
-}
-
-onEmailChange(event) {
-  this.setState({email: event.target.value})
-}
-
-onMessageChange(event) {
-  this.setState({message: event.target.value})
-}
-onPhoneChange(event) {
-  this.setState({phone: event.target.value})
-}
-onAddressChange(event) {
-  this.setState({address: event.target.value})
-}
-onPasswordChange(event) {
-  this.setState({password: event.target.value})
-}
-
-handleSubmit(event) {
-  event.preventDefault();
-  if (this.state.fName=='') {
-    console.log("please add name");
-  } else if (this.state.lName=='') {
-    console.log("please add lname");
-  } else if(this.state.email==''){
-    console.log("please add email");
-  } else if(this.state.phone==''){
-    console.log("please add phone");
-  } else if(this.state.address==''){
-    console.log("please add address");
-  }else if(this.state.password==''){
-    console.log("please add pass");
-  } else{
-    // console.log("All data Ready to send");
-    // console.log(this.state);
-    this.createTeacher();
-    this.resetForm();
-
-  }
+const useStyles = makeStyles((theme) => ({
   
-}
-resetForm(){
-  this.setState({name: '', email: '', message: '', phone: '', address: ''})
-}
-
-createTeacher() {
-  fetch("http://localhost:49238/api/teachers", {
-    "method": "POST",
-    "headers": {
-      "content-type": "application/json",
-      "accept": "application/json"
+    mainFeaturedPost: {
+      position: 'relative',
+      backgroundColor: theme.palette.grey[800],
+      color: theme.palette.common.white,
+      backgroundImage: `url(${Image})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      
     },
-    "body": JSON.stringify({
-      Name:  this.state.name,
-      username:  this.state.name,
-      password:  this.state.password,
-      class: null
-    })
-  })
-  .then(response => response.json())
-  .then(response => {
-    console.log(response)
-  })
-  .catch(err => {
-    console.log(err);
-  });
-}
-}
-export default RegisterTea;
+   
+    mainFeaturedPostContent: {
+        
+      position: 'relative',
+      padding: theme.spacing(3),
+      [theme.breakpoints.up('xs')]: {
+        padding: theme.spacing(10),
+        
+      },
+    },
+
+    paper: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+   
+    form: {
+      width: '100%', 
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+
+
+export default function TeacherR () {
+
+    const classes = useStyles();
+    const history = useHistory();
+
+    const [firstName, setFirstName] =  useState("");
+    const [lastName, setLastName] =  useState("");
+    const [email, setEmail] =  useState("");
+    const [phoneNumber, setPhoneNumber] =  useState("");
+    const [address, setAddress] =  useState("");
+    const [subject, setSubject] =  useState("");
+    const [price, setPrice] =  useState("");
+    const [password, setPassword] =  useState("");
+    const [role, setRole] =  useState("Teacher");
+    const [successMessage, setSuccessMessage] =  useState("");
+    const [errorMessage, setErrorMessage] =  useState("");
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+      const postData = {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        subject,
+        price,
+        password,
+        role
+      };
+      axios.post('https://localhost:44319/api/Accounts/Register', postData)
+      .then((res) => {
+        if (res.data.length > 0) {
+          if (res.data[0].code == "DuplicateUserName") {
+            // this.setState({ errorMessage: res.data[0].description });
+            setErrorMessage(res.data[0].description);
+          }else if(res.data[0].code == "PasswordTooShort")
+          {
+            setErrorMessage(res.data[0].description);
+          }
+          debugger
+        }else if(res.status == 200){
+          debugger
+          // this.setState({ successMessage:"Teacher Registered Successfully" });
+          history.push("/home");
+        }
+      }).catch((err) =>{
+        // this.setState({ errorMessage: err.message });
+        setErrorMessage(err.message);
+      });
+    }
+
+    return (
+
+      <div className="App">
+        <Header />
+        <NavBar />
+        <div>
+            
+    <Paper className={classes.mainFeaturedPost}>
+      
+      <div className={classes.overlay} />
+      <Grid container>
+        <Grid container justify="center" item xs={12}>
+          <div className={classes.mainFeaturedPostContent}>
+              
+            <Typography component="h1" variant="h3"  gutterBottom>
+               TEACHER
+            </Typography>
+            <Typography variant="h5" color="inherit" paragraph>
+             " You can share your knowledge without limit and anyone who is interested in what is being taught can learn from you. At the same time you can earn a good monthly income based on your teaching ability. If you can spend a little extra time on this, you too can go on a successful journey  "
+            </Typography>
+          </div>
+        </Grid>
+      </Grid>
+    </Paper>
+        </div>
+        <div >
+          
+        <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h2" variant="h5" color='primary'>
+          Register as a Teacher
+        </Typography>
+              {successMessage && <span style={{ color: "red", fontSize: "20px" }}>{successMessage}</span>}
+              {errorMessage && <span style={{ color: "red", fontSize: "20px" }}>{errorMessage}</span>}
+        <form onSubmit={onSubmit} className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                 onChange={(e) =>{setFirstName(e.target.value)}}
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoComplete="first name"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                onChange={(e) =>{setLastName(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="last name"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+               onChange={(e) =>{setEmail(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                onChange={(e) =>{setPhoneNumber(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="phone_number"
+                label="Phone Number"
+                id="phone_number"
+                autoComplete="phoneNumber"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                 onChange={(e) =>{setAddress(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="address"
+                label="Address"
+                id="address"
+                autoComplete="address"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                 onChange={(e) =>{setSubject(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="subject"
+                label="subject"
+                id="subject"
+                autoComplete="subject"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                 onChange={(e) =>{setPrice(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="price"
+                label="price"
+                id="price"
+                autoComplete="price"
+              />
+            </Grid>
+            
+            <Grid item xs={12}>
+              <TextField
+                 onChange={(e) =>{setPassword(e.target.value)}}
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="center">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+    
+    </Container>
+        </div>
+        <Footer />
+      </div> 
+    );
+  }

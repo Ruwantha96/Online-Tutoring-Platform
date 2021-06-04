@@ -67,7 +67,7 @@ export default function Footer() {
           <Link style={{color:"white", textDecoration:"none"}} to="/contact">CONTACT US </Link>
           </li>
           <li className="mb-3">
-          <Link style={{color:"white", textDecoration:"none"}} to="/institutes">INSTITUTES </Link>
+          <Link style={{color:"white", textDecoration:"none"}} to="/about">INSTITUTES </Link>
           </li>
         </ul>
       </div>

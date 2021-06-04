@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Image from '../../images/a.jpg'
+import Image1 from '../../images/j.jpg'
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles';
@@ -122,6 +123,9 @@ export default function Home() {
         </Grid>
       </Grid>
     </Paper>
+    <div>
+           <img src={Image1} width ='100%' height='auto' alt="logo" ></img>
+           </div>
     <Footer />
     </div>
   );

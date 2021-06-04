@@ -44,6 +44,7 @@ import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import Table from './Publishedtable';
 import Addnew from './Addnew';
+import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -196,7 +197,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AccTCRaddnew() {
-  const classes = useStyles()
+  var f = localStorage.getItem('FirstName');
+  var l = localStorage.getItem('LastName');
+  var fn = f+ " " + l;
+  const [fullName, setFullName] = React.useState(fn);
+  const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -205,12 +210,13 @@ export default function AccTCRaddnew() {
     setOpen(false);
   };
 
-
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
  
   return (
     <div>
+      <Font family='Roboto'>
+
     <UserHeader />
     <div className="background">
 
@@ -240,7 +246,7 @@ export default function AccTCRaddnew() {
 
          
 {/* Search Bar */}
-       <div className={classes.search}>            
+       {/* <div className={classes.search}>            
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -250,7 +256,7 @@ export default function AccTCRaddnew() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}/>
-          </div>
+          </div> */}
 
 
         </Toolbar>
@@ -280,9 +286,9 @@ export default function AccTCRaddnew() {
 
       <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AccountBox />
+        <AccountBox />
       </ListItemIcon>
-      <ListItemText primary="Manoj Amarasinghe" />
+      <ListItemText primary={fullName} />
       </ListItem>
     
         <ListItem Avatar>
@@ -315,10 +321,20 @@ export default function AccTCRaddnew() {
 
     <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AddBox />
+        <AddBox />
       </ListItemIcon>
       <ListItemText style={{color:"white"}} primary="Add a new tutorial" />
     </ListItem>
+
+    <Link style={{color:"black", textDecoration:"none"}} to="./AccTCRaddquiz"> 
+        <ListItem button>
+          <ListItemIcon style={{color:"white"}}>
+             <AddBox/>
+        </ListItemIcon>
+          <ListItemText style={{color:"white"}} primary="Add Quiz" />
+        </ListItem>
+ </Link> 
+
     
     
     
@@ -350,6 +366,7 @@ export default function AccTCRaddnew() {
   </MuiThemeProvider> 
 </div>
 <Footer />
+</Font>
    </div>         
   );
 }

@@ -61,18 +61,18 @@ export default function StudentR() {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Register
-      </Button>
+      </Button> */}
       <Dialog open={open}>
         <div onClick={handleClose}>
         <IconButton  className={classes.closeButton} >

@@ -11,6 +11,7 @@ import Image3 from '../../images/c3.png'
 import Image4 from '../../images/c4.png'
 import Image5 from '../../images/c5.png'
 import Image6 from '../../images/c6.png'
+import Image7 from '../../images/q.jpg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,15 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+
+  background5: {
+    position: 'relative',
+    backgroundImage: `url(${Image7})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    
+  },
 }));
 
 export default function Institute() {
@@ -32,6 +42,7 @@ export default function Institute() {
     <div className={classes.root}>
         <Header />
         <NavBar />
+        <div className={classes.background5}>
       <Grid container spacing={3} className={classes.paper}>
         <Grid container alignItems="center" justify="center" item xs>
           <Paper className={classes.paper}><img src={Image1} width ='200'  alt="c1" ></img></Paper>
@@ -54,6 +65,7 @@ export default function Institute() {
           <Paper className={classes.paper}><img src={Image6} width ='200'  alt="c6" ></img></Paper>
         </Grid>
       </Grid>
+      </div>
       <Footer />
     </div>
   );

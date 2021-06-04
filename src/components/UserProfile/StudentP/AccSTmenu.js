@@ -45,6 +45,7 @@ import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import  Table from './Menutable';
+import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -61,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
 
   root: {
     display: 'flex',
-    
    },
 
   
@@ -189,8 +189,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function AccSTmenu() {
-  const classes = useStyles()
+  var f = localStorage.getItem('FirstName');
+  var l = localStorage.getItem('LastName');
+  var fn = f+" "+l;
+  const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [fullName, setFullName] = React.useState(fn);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -202,6 +206,8 @@ export default function AccSTmenu() {
  
   return (
     <div>
+      <Font family='Roboto'>
+
     <UserHeader />
     <div className="background">
      
@@ -225,7 +231,7 @@ export default function AccSTmenu() {
 
           </IconButton>
           <Typography component="h1" variant="h5" color="inherit" noWrap className={(classes.title)} style={{fontWeight:'Bold'}}>
-            STUDENT PROFILE
+            Student Profile
           </Typography>
 
           {/* 
@@ -244,7 +250,7 @@ export default function AccSTmenu() {
           */}
 
        {/* Search Bar */}
-         <div className={classes.search}>            
+         {/* <div className={classes.search}>            
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -254,7 +260,7 @@ export default function AccSTmenu() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}/>
-          </div>
+          </div> */}
 
         </Toolbar>
       </AppBar>
@@ -280,9 +286,9 @@ export default function AccSTmenu() {
 
       <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AccountBox />
+        <AccountBox />
       </ListItemIcon>
-      <ListItemText primary="Manoj Amarasinghe" />
+      <ListItemText primary={fullName} />
       </ListItem>
     
         <ListItem Avatar>
@@ -298,7 +304,7 @@ export default function AccSTmenu() {
         
     <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < Home />
+        <Home />
       </ListItemIcon>
       <ListItemText primary="Main Menu" />
     </ListItem>
@@ -316,20 +322,22 @@ export default function AccSTmenu() {
   <Link style={{color:"black", textDecoration:"none"}} to="./AccSTsubscriptions">
   <ListItem button>
       <ListItemIcon style={{color:"white"}}>
-        < AddAlert />
+        <AddAlert />
       </ListItemIcon>
       <ListItemText style={{color:"white"}} primary="Subscriptions" />
     </ListItem>
     </Link>
-
-
+  <Link style={{color:"black", textDecoration:"none"}} to="./AccSTQuiz">
+  <ListItem button>
+      <ListItemIcon style={{color:"white"}}>
+        <AddAlert />
+      </ListItemIcon>
+      <ListItemText style={{color:"white"}} primary="Attempt Quiz" />
+    </ListItem>
+    </Link>
 
         </List>
     </Drawer> 
-
-
-
-
 
 
 {/*Content box*/}
@@ -342,10 +350,7 @@ export default function AccSTmenu() {
             {/* list of uploaded videos */}
             <Grid item xs={12} lg={12}>
               <Paper className={classes.paper}>
-
-
-              <Table/>
-
+              <Table />
 
               </Paper>
             </Grid>
@@ -357,6 +362,7 @@ export default function AccSTmenu() {
   </MuiThemeProvider> 
 </div>
 <Footer />
+</Font>
 </div>
             
   );

@@ -44,7 +44,7 @@ class VideoApp extends Component {
             <div style={{paddingLeft:"0px"}}>
                 <VideoPlayer
                     controls={true}
-                    src={this.state.video.src}
+                    src={this.props.src}
                     poster={this.state.video.poster}
                     width="1110"
                     height="500"

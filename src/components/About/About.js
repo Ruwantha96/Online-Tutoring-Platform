@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import std1 from '../../images/student01.jpg'
+import std1 from '../../images/zz.jpg'
 import std2 from '../../images/student02.jpg'
 import Header from '../Header/Header'
 import NavBar from '../NavigationBar/NavBar'
 import Footer from '../Footer/Footer';
+import '../About/About.css'
 
 const useStyles = makeStyles((theme) => ({
   
@@ -25,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('xs')]: {
-      padding: theme.spacing(6),
-      paddingRight: 0,
+      padding: theme.spacing(10),
+      paddingRight: 10,
     },
   },
 
@@ -43,27 +44,26 @@ export default function About() {
       
       <div className={classes.overlay} />
       <Grid container >
+        <div className="background2" >
           <div className={classes.aboutPostContent}>
             <div className="col-lg-12">
-            <h1 className="col-12 text-primary text-center mb-5">
+            <h1 className="col-12  text-center mb-5">
               ABOUT US
             </h1>
             <div className="col-lg-12">
             
             <div className="col-lg-12 col-sm-12 float-left pt-2 justify-content-center">
             <h5 className=" mb-4">
-            TODAY’S KNOWLEDGE, TOMORROW’S SUCCESS THROUGH e-LEARNING
+            TODAY’S KNOWLEDGE, TOMORROW’S SUCCESS THROUGH ONLINE LEARNING
             </h5>
-            <p>
-            onlinetuition.lk is a one-on-one online educational platform that connects Sri Lankan students with tutors. The students are able to accrete knowledge of academic disciplines through one-on-one tuition classes held by professionals and scholars who are specialized in specific subject areas. <br /> <br />
-
-The tutors enrolled with onlinetuition.lk are high achievers with exceptional track records in their academic career. Most of the tutors are graduates and undergraduates from leading engineering, management and medical universities in Sri Lanka. This diverse tutor panel consists of academic researchers in their specialized fields and integrates new teaching techniques when conducting online classes.
-            </p>
+            <p class="text-justify">
+            onlinetuition.lk is a one-on-one online educational platform that connects Sri Lankan students with tutors. The students are able to accrete knowledge of academic disciplines through one-on-one tuition classes held by professionals and scholars who are specialized in specific subject areas. The tutors enrolled with onlinetuition.lk are high achievers with exceptional track records in their academic career. Most of the tutors are graduates and undergraduates from leading engineering, management and medical universities in Sri Lanka. This diverse tutor panel consists of academic researchers in their specialized fields and integrates new teaching techniques when conducting online classes.
+              </p>
             
             
             </div>
-            <div className="col-lg-12 col-sm-12 mt-4 pb-5 float-left pt-5 d-flex justify-content-center">
-            <img src={std1} width ='400' height ='300' alt="logo" ></img>
+            <div className="col-lg-12 col-sm-12 mt-4 pb-1 float-left pt-3 d-flex justify-content-center">
+            <img src={std1} width ='500' height ='350' alt="logo" ></img>
             </div>
             </div>
 
@@ -81,26 +81,24 @@ The tutors enrolled with onlinetuition.lk are high achievers with exceptional tr
                 Create a supportive learning environment
               </li>
               <li className="mb-4">
-                Using a mix of learning tools for better engagement with the students. (The virtual classroom is equipped with a visual meeting, screen sharing, multiuser whiteboard to draw together, send text and picture messages and share documents etc.)
-              </li>
-              <li className="mb-4">
                 Collaborate audio and visual tools - This gives the sense of working with a mix of activities which increase student engagement with tutor and other learners.
               </li>
               <li className="mb-4">
                 Provide ongoing feedback - The tutor will provide the feedback in order to promote and motivate the students to dive deep to acquire subject knowledge.
               </li>
               <li className="mb-4">
-                Student centered education (giving priority for the students)
+                Student centered education
               </li>
             </ol>
-            <p>
-            The student can decide on the pace of the lessons and key subject areas to be addressed. The teachers will encourage the students to actively engage when teaching. The students will be encouraged to develop their problem-solving skills and critical thinking.
-            <br /> <br />
-            onlinetuition.lk paves the way to create a positive and collaborative learning environment for students by allowing them to curate their own tutoring style. This is to facilitate quality online tuition experience in order to gain knowledge in a timely way, going beyond the traditional educational experience.
+           
+            <p className="text-justify" >
+            The student can decide on the pace of the lessons and key subject areas to be addressed. The teachers will encourage the students to actively engage when teaching. The students will be encouraged to develop their problem-solving skills and critical thinking.onlinetuition.lk paves the way to create a positive and collaborative learning environment for students by allowing them to curate their own tutoring style. This is to facilitate quality online tuition experience in order to gain knowledge in a timely way, going beyond the traditional educational experience.
             </p>
+           
             </div>
             </div>
             </div>
+          </div>
           </div>
       </Grid>
     </Paper>

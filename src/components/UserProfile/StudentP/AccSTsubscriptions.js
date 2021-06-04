@@ -43,6 +43,7 @@ import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import Table from './Subscriptionstable';
+import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -195,7 +196,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AccSTsubscriptions() {
-  const classes = useStyles()
+  var f = localStorage.getItem('FirstName');
+  var l = localStorage.getItem('LastName');
+  var fn = f+" "+l;
+  const classes = useStyles();
+  const [fullName, setFullName] = React.useState(fn);
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -210,6 +215,8 @@ export default function AccSTsubscriptions() {
  
   return (
     <div>
+      <Font family='Roboto'>
+
     <UserHeader />
     <div className="background">
 
@@ -253,7 +260,7 @@ export default function AccSTsubscriptions() {
 
          
        {/* Search Bar */}
-       <div className={classes.search}>            
+       {/* <div className={classes.search}>            
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -263,7 +270,7 @@ export default function AccSTsubscriptions() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}/>
-          </div>
+          </div> */}
 
 
         </Toolbar>
@@ -295,7 +302,7 @@ export default function AccSTsubscriptions() {
       <ListItemIcon style={{color:"white"}}>
         < AccountBox />
       </ListItemIcon>
-      <ListItemText primary="Manoj Amarasinghe" />
+      <ListItemText primary={fullName} />
       </ListItem>
     
         <ListItem Avatar>
@@ -334,6 +341,15 @@ export default function AccSTsubscriptions() {
       <ListItemText style={{color:"white"}} primary="Subscriptions" />
     </ListItem>
     
+    <Link style={{color:"black", textDecoration:"none"}} to="./AccSTQuiz">
+  <ListItem button>
+      <ListItemIcon style={{color:"white"}}>
+        <AddAlert />
+      </ListItemIcon>
+      <ListItemText style={{color:"white"}} primary="Attempt Quiz" />
+    </ListItem>
+    </Link>
+    
         </List>
     </Drawer> 
 
@@ -362,6 +378,7 @@ export default function AccSTsubscriptions() {
   </MuiThemeProvider> 
 </div>
 <Footer />
+</Font>
    </div>         
   );
 }

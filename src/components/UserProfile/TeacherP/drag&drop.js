@@ -18,7 +18,8 @@ function Upload() {
   const getUploadParams = ({ file }) => {
     const body = new FormData();
     body.append('dataFiles', file);
-    return { url: 'http://localhost:4000/uploadmultifile', body }
+    debugger
+    return { url: 'https://localhost:44319/Teachers/UploadLecture', body }
   }
 
   // handle the status of the file upload
