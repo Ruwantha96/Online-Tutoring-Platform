@@ -45,7 +45,6 @@ import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import  Table from './Menutable';
-import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -206,8 +205,6 @@ export default function AccSTmenu() {
  
   return (
     <div>
-      <Font family='Roboto'>
-
     <UserHeader />
     <div className="background">
      
@@ -362,7 +359,6 @@ export default function AccSTmenu() {
   </MuiThemeProvider> 
 </div>
 <Footer />
-</Font>
 </div>
             
   );

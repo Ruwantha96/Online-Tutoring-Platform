@@ -43,7 +43,6 @@ import { fade } from '@material-ui/core/styles';
 import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import Table from './Subscriptionstable';
-import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -215,8 +214,6 @@ export default function AccSTsubscriptions() {
  
   return (
     <div>
-      <Font family='Roboto'>
-
     <UserHeader />
     <div className="background">
 
@@ -378,7 +375,6 @@ export default function AccSTsubscriptions() {
   </MuiThemeProvider> 
 </div>
 <Footer />
-</Font>
    </div>         
   );
 }

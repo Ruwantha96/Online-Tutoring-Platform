@@ -44,7 +44,6 @@ import Footer from '../../Footer/Footer'
 import Image from '../../../images/q.png'
 import Table from './Publishedtable';
 import Addnew from './Addnew';
-import Font, {Text} from 'react-font'
 
 const theme =createMuiTheme({
   palette:{
@@ -215,8 +214,6 @@ export default function AccTCRaddnew() {
  
   return (
     <div>
-      <Font family='Roboto'>
-
     <UserHeader />
     <div className="background">
 
@@ -366,7 +363,6 @@ export default function AccTCRaddnew() {
   </MuiThemeProvider> 
 </div>
 <Footer />
-</Font>
    </div>         
   );
 }
