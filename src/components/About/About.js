@@ -54,7 +54,7 @@ export default function About() {
             
             <div className="col-lg-12 col-sm-12 float-left pt-2 justify-content-center">
             <h5 className=" mb-4">
-             TOMORROW’S SUCCESS THROUGH ONLINE LEARNING
+            TODAY’S KNOWLEDGE,TOMORROW’S SUCCESS THROUGH ONLINE LEARNING
             </h5>
             <p class="text-justify">
             onlinetuition.lk is a one-on-one online educational platform that connects Sri Lankan students with tutors. The students are able to accrete knowledge of academic disciplines through one-on-one tuition classes held by professionals and scholars who are specialized in specific subject areas. The tutors enrolled with onlinetuition.lk are high achievers with exceptional track records in their academic career. Most of the tutors are graduates and undergraduates from leading engineering, management and medical universities in Sri Lanka. This diverse tutor panel consists of academic researchers in their specialized fields and integrates new teaching techniques when conducting online classes.
