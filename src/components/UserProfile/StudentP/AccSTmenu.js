@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   drawerPaper: {
-    color:"yellow",
+    color:"white",
     backgroundColor:grey[900],
     position: 'relative',
     whiteSpace: 'nowrap',
