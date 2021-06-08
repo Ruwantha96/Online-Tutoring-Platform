@@ -53,7 +53,7 @@ export default function Contact() {
                <div className="row">
                     <div className="col-md-6">
                         <div className="form-group mb-3">
-                            <input type="text" name="txtName" className="form-control" placeholder=" Name *" value="" />
+                            <input type="text" name="txtName" className="form-control" placeholder="Your Name *" value="" />
                         </div>
                         <div className="form-group mb-3">
                             <input type="text" name="txtEmail" className="form-control" placeholder="Your Email *" value="" />
