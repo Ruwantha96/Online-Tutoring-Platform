@@ -41,10 +41,10 @@ export default function Footer() {
       <img src={logo} width ='75' alt="logo" ></img>
       
         <p >
-        A/L Classes<br />
-        O/L Classes<br />
-        Social Development courses<br />  
-        Professinal Courses<br />  
+        <i class="fas fa-angle-right"></i> A/L Classes<br />
+        <i class="fas fa-angle-right"></i> O/L Classes<br />
+        <i class="fas fa-angle-right"></i> Social Development courses<br />  
+        <i class="fas fa-angle-right"></i> Professinal Courses<br />  
         </p>
         <ul id="menu">
           <li><i class="fab fa-facebook-f"></i></li>
@@ -61,13 +61,13 @@ export default function Footer() {
         <ul className="list-unstyled mb-0">
           <li className="mb-3">
            
-            <Link style={{color:"white", textDecoration:"none"}} to="/about">ABOUT </Link>
+            <Link style={{color:"white", textDecoration:"none"}} to="/about"><i class="fas fa-angle-right"></i> ABOUT </Link>
           </li>
           <li className="mb-3">
-          <Link style={{color:"white", textDecoration:"none"}} to="/contact">CONTACT US </Link>
+          <Link style={{color:"white", textDecoration:"none"}} to="/contact"><i class="fas fa-angle-right"></i> CONTACT US </Link>
           </li>
           <li className="mb-3">
-          <Link style={{color:"white", textDecoration:"none"}} to="/about">INSTITUTES </Link>
+          <Link style={{color:"white", textDecoration:"none"}} to="/about"><i class="fas fa-angle-right"></i> INSTITUTES </Link>
           </li>
         </ul>
       </div>
