@@ -11,7 +11,6 @@ const URL = 'https://jsonplaceholder.typicode.com/users'
 
 
 const QUiz = (props) => {
-    // const [open, setOpen] = useState(false);
     const history = useHistory();
     const [courses, setCourses] = useState([]);
     const [startIndex, setStartIndex] =  useState(0);
@@ -22,16 +21,20 @@ const QUiz = (props) => {
     const [error, setError] =  useState(null);
     const [hideBtn, setHideBtn] = useState(true); 
 
-    useEffect( async () => {
-        try {
-            const res = await axios.get('https://localhost:44319/Students/GetAllQuizByTeacherId');
-            setCourses(res.data.quizesList);
-            setCountedAnswer(res.data.answer);
-            setCountTotalQuiz(res.data.total);
-            setError(null);
-        } catch (ex) {
-            setCourses(null);
-        }
+    useEffect(() => {
+        async function fetchData() {
+            // You can await here
+            try {
+                const res = await axios.get('Students/GetAllQuizByTeacherId');
+                setCourses(res.data.quizesList);
+                setCountedAnswer(res.data.answer);
+                setCountTotalQuiz(res.data.total);
+                setError(null);
+            } catch (ex) {
+                setCourses(null);
+            }
+          }
+          fetchData();
     }, []);
 
     const renderHeader = () => {
@@ -56,7 +59,7 @@ const QUiz = (props) => {
               };
               setStartIndex(postData.startIndex);
               const res = await axios
-              .get('https://localhost:44319/Students/GetAllQuizByTeacherId?startIndex='+postData.startIndex+"&maxRows="+postData.maxRows+"&SelectedAnswer="+postData.selectedAnswer+"&countedAnswer="+postData.countedAnswer);
+              .get('Students/GetAllQuizByTeacherId?startIndex='+postData.startIndex+"&maxRows="+postData.maxRows+"&SelectedAnswer="+postData.selectedAnswer+"&countedAnswer="+postData.countedAnswer);
             setCourses(res.data.quizesList);
             setCountedAnswer(res.data.answer);
             setCountTotalQuiz(res.data.total);

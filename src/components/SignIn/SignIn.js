@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -85,7 +84,7 @@ export default function SignIn() {
       email,
       password
     };
-      await axios.post('https://localhost:44319/api/Accounts/login', postData)
+      await axios.post('api/Accounts/login', postData)
     .then((res) => {
       debugger
       if(res.data.role == "Teacher"){
@@ -99,16 +98,11 @@ export default function SignIn() {
         localStorage.setItem('UserIdStd', res.data.id);
         localStorage.setItem('FirstName', res.data.firstName);
         localStorage.setItem('LastName', res.data.lastName);
-        // <Link style={{ color: "black", textDecoration: "none" }} to="/accSTmenu">
-        // </Link>
-        // history.push("/accTECmenu");
         history.push("/accSTmenu");
       }else if(res.data == "EmailPasswordIncorrect"){
         setErrorMessage("Email or Password is incorrect!");
       }
-      debugger
     }).catch((err) =>{
-      debugger
       setErrorMessage(err.message);
     });
   });

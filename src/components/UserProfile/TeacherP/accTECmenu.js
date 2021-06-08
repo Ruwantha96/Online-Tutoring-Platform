@@ -192,7 +192,6 @@ export default function AccTECmenu() {
   var f = localStorage.getItem('FirstName');
   var l = localStorage.getItem('LastName');
   var fn = f+" "+l;
-  debugger
   const [fullName, setFullName] = React.useState(fn);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -203,8 +202,6 @@ export default function AccTECmenu() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
- 
  
   return (
     <div>

@@ -44,9 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
-
     flexGrow: 1,
-
     '& > *': {
       margin: theme.spacing(1),
       
@@ -58,9 +56,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserHeader() {
   const classes = useStyles();
-
-  
-
 
   return (
     <div className={classes.root}>

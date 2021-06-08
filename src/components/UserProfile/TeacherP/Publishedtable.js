@@ -115,7 +115,6 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-
     }),
 
 
@@ -187,7 +186,7 @@ const Table = (props) => {
     const handleChange =(async event => {
         var searchTerm  = event.target.value;
         try {
-                const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
+                const res = await axios.get('Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
                 debugger
                 setCourses(res.data)
             } catch (ex) {
@@ -195,16 +194,21 @@ const Table = (props) => {
             }
     });
 
-    useEffect( async () => {
-        try {
-            // var stdId = localStorage.getItem('UserId');
-            const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+"");
-            debugger
-            setCourses(res.data)
-        } catch (ex) {
-            setCourses(null);
-        }
-    }, []);
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      try {
+        // var stdId = localStorage.getItem('UserId');
+        const res = await axios.get('Students/GetAllLectureByTeacherId?searchTerm=' + "");
+        debugger
+        setCourses(res.data)
+      } catch (ex) {
+        setCourses(null);
+      }
+      // ...
+    }
+    fetchData();
+  }, []);
 
     // const getData = async () => {
     //     const response = await axios.get(URL)

@@ -81,7 +81,6 @@ render() {
     this.setState({file: event.target.files[0]});
   }
  
-  
   handleSubmit(event) {
     var formData = new FormData();
     event.preventDefault();
@@ -101,7 +100,7 @@ render() {
       formData.append("batch", this.state.batch);
       formData.append("batch", this.state.batch);
       formData.append("file", this.state.file, this.state.file.name);
-      axios.post('https://localhost:44319/Teachers/UploadLecture',formData)
+      axios.post('Teachers/UploadLecture',formData)
       .then((res) => {
         this.setState({sucessMessage: "Tutorials added successfully!"});
         // this.props.history.push("/AccTCRpublished");

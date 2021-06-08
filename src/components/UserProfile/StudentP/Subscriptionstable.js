@@ -188,9 +188,7 @@ const Table = () => {
     const handleChange =(async event => {
         var searchTerm  = event.target.value;
         try {
-            debugger
-            // var stdId = localStorage.getItem('UserIdStd');
-            const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
+            const res = await axios.get('Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
             debugger
             setCourses(res.data)
         } catch (ex) {
@@ -198,23 +196,26 @@ const Table = () => {
         }
     });
 
-    useEffect( async () => {
-        try {
-            debugger
-            // var stdId = localStorage.getItem('UserIdStd');
-            const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+"");
-            debugger
-            setCourses(res.data)
-        } catch (ex) {
-            setCourses(null);
-        }
-    }, []);
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      try {
+        debugger
+        var searchTerm = "";
+        const res = await axios.get('Students/GetAllLectureByTeacherId?searchTerm=' + searchTerm);
+        setCourses(res.data)
+      } catch (ex) {
+        setCourses(null);
+      }
+      // ...
+    }
+    fetchData();
+  }, []);
 
     // const getData = async () => {
     //     const response = await axios.get(URL)
     //     setCourses(response.data)
     // }
-
 
     const renderHeader = () => {
         let headerElement = [ 'batch', 'class', 'lesson', 'operation']

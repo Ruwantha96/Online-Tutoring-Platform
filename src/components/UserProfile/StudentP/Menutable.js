@@ -193,7 +193,7 @@ const Table = (props) => {
     const handleChange =(async event => {
         var searchTerm  = event.target.value;
         try {
-            const res = await axios.get('https://localhost:44319/Teachers/GetAllTeacher?searchTerm='+searchTerm);
+            const res = await axios.get('Teachers/GetAllTeacher?searchTerm='+searchTerm);
             debugger;
             setCourses(res.data);
         } catch (ex) {
@@ -201,15 +201,20 @@ const Table = (props) => {
         }
     });
 
-    useEffect( async () => {
+    useEffect(() => {
+      async function fetchData() {
+        // You can await here
         try {
-            const res = await axios.get('https://localhost:44319/Teachers/GetAllTeacher?searchTerm='+"");
+          var searchTerm = "";
+            const res = await axios.get('Teachers/GetAllTeacher?searchTerm='+searchTerm);
             debugger;
             setCourses(res.data);
         } catch (ex) {
             setCourses(null);
         }
-    }, [])
+      }
+      fetchData();
+    }, []);
 
     // React.useEffect(() => {
     //     const results = people.filter(person =>
@@ -254,7 +259,7 @@ const Table = (props) => {
         formData.append("monthExpiry", "03");
         formData.append("yearExpiry", "25");
         formData.append("cvv", "123");
-        const res =  axios.post('https://localhost:44319/Students/StudentPayment', formData);
+        const res =  axios.post('Students/StudentPayment', formData);
         debugger;
         if(res){
             history.push("/AccSTsubscriptions");

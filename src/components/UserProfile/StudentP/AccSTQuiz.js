@@ -299,15 +299,7 @@ export default function AccSTQuiz() {
               </Avatar>
         </ListItem>   
 
-        
-    <ListItem button>
-      <ListItemIcon style={{color:"white"}}>
-        <Home />
-      </ListItemIcon>
-      <ListItemText primary="Main Menu" />
-    </ListItem>
-       
-    
+      
     {/*
     <ListItem button>
       <ListItemIcon style={{color:"white"}}>
@@ -316,6 +308,15 @@ export default function AccSTQuiz() {
       <ListItemText primary="Inbox"  />
     </ListItem>
     */}
+
+<Link style={{color:"black", textDecoration:"none"}} to="./AccSTmenu">  
+    <ListItem button>
+      <ListItemIcon style={{color:"white"}}>
+        < Home />
+      </ListItemIcon>
+      <ListItemText style={{color:"white"}} primary="Main Menu" />
+    </ListItem>
+    </Link>
 
   <Link style={{color:"black", textDecoration:"none"}} to="./AccSTsubscriptions">
   <ListItem button>

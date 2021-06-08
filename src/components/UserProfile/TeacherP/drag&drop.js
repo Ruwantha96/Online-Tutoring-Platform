@@ -13,13 +13,12 @@ const Preview = ({ meta }) => {
 }
 
 function Upload() {
-
   // specify upload params and API url to file upload
   const getUploadParams = ({ file }) => {
     const body = new FormData();
     body.append('dataFiles', file);
     debugger
-    return { url: 'https://localhost:44319/Teachers/UploadLecture', body }
+    return { url: 'Teachers/UploadLecture', body }
   }
 
   // handle the status of the file upload
