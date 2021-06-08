@@ -82,7 +82,7 @@ export default function StudentR2 () {
         role
       };
 
-      axios.post('api/Accounts/Register', postData)
+      axios.post('https://localhost:44319/api/Accounts/Register', postData)
       .then((res) => {
         if (res.data.length > 0) {
           if (res.data[0].code == "DuplicateUserName") {
