@@ -51,7 +51,7 @@ export default function Contact() {
       phone,
       message,
     };
-      await axios.post('https://localhost:44319/api/Accounts/ContactUs', postData)
+      await axios.post('https://onlinetutoring.azurewebsites.net/api/Accounts/ContactUs', postData)
     .then((res) => {
       debugger
       if(res.data == "EmailSuccessfully"){

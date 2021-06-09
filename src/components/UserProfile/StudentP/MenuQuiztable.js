@@ -25,7 +25,7 @@ const QUiz = (props) => {
         async function fetchData() {
             // You can await here
             try {
-                const res = await axios.get('https://localhost:44319/Students/GetAllQuizByTeacherId');
+                const res = await axios.get('https://onlinetutoring.azurewebsites.net/Students/GetAllQuizByTeacherId');
                 setCourses(res.data.quizesList);
                 setCountedAnswer(res.data.answer);
                 setCountTotalQuiz(res.data.total);
@@ -59,7 +59,7 @@ const QUiz = (props) => {
               };
               setStartIndex(postData.startIndex);
               const res = await axios
-              .get('https://localhost:44319/Students/GetAllQuizByTeacherId?startIndex='+postData.startIndex+"&maxRows="+postData.maxRows+"&SelectedAnswer="+postData.selectedAnswer+"&countedAnswer="+postData.countedAnswer);
+              .get('https://onlinetutoring.azurewebsites.net/Students/GetAllQuizByTeacherId?startIndex='+postData.startIndex+"&maxRows="+postData.maxRows+"&SelectedAnswer="+postData.selectedAnswer+"&countedAnswer="+postData.countedAnswer);
             setCourses(res.data.quizesList);
             setCountedAnswer(res.data.answer);
             setCountTotalQuiz(res.data.total);

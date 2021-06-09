@@ -124,7 +124,7 @@ export default class AddQuiz extends React.Component {
       formData.append("optionC", this.state.optionC);
       formData.append("optionD", this.state.optionD);
       formData.append("answer", this.state.answer);
-      axios.post('https://localhost:44319/Teachers/UploadQuizes',formData )
+      axios.post('https://onlinetutoring.azurewebsites.net/Teachers/UploadQuizes',formData )
       .then((res) => {
         this.setState({sucessMessage: "Question added successfully!"});
         // this.props.history.push('/AccTCRpublished/');

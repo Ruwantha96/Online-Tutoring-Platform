@@ -87,7 +87,7 @@ export default function TeacherR () {
         password,
         role
       };
-      axios.post('https://localhost:44319/api/Accounts/Register', postData)
+      axios.post('https://onlinetutoring.azurewebsites.net/api/Accounts/Register', postData)
       .then((res) => {
         if (res.data.length > 0) {
           if (res.data[0].code == "DuplicateUserName") {

@@ -100,7 +100,7 @@ render() {
       formData.append("batch", this.state.batch);
       formData.append("batch", this.state.batch);
       formData.append("file", this.state.file, this.state.file.name);
-      axios.post('https://localhost:44319/Teachers/UploadLecture',formData)
+      axios.post('https://onlinetutoring.azurewebsites.net/Teachers/UploadLecture',formData)
       .then((res) => {
         this.setState({sucessMessage: "Tutorials added successfully!"});
         // this.props.history.push("/AccTCRpublished");

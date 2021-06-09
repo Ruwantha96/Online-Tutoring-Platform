@@ -186,7 +186,7 @@ const Table = (props) => {
     const handleChange =(async event => {
         var searchTerm  = event.target.value;
         try {
-                const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
+                const res = await axios.get('https://onlinetutoring.azurewebsites.net/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
                 debugger
                 setCourses(res.data)
             } catch (ex) {
@@ -199,7 +199,7 @@ const Table = (props) => {
       // You can await here
       try {
         // var stdId = localStorage.getItem('UserId');
-        const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm=' + "");
+        const res = await axios.get('https://onlinetutoring.azurewebsites.net/Students/GetAllLectureByTeacherId?searchTerm=' + "");
         debugger
         setCourses(res.data)
       } catch (ex) {

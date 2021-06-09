@@ -188,7 +188,7 @@ const Table = () => {
     const handleChange =(async event => {
         var searchTerm  = event.target.value;
         try {
-            const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
+            const res = await axios.get('https://onlinetutoring.azurewebsites.net/Students/GetAllLectureByTeacherId?searchTerm='+searchTerm);
             debugger
             setCourses(res.data)
         } catch (ex) {
@@ -202,7 +202,7 @@ const Table = () => {
       try {
         debugger
         var searchTerm = "";
-        const res = await axios.get('https://localhost:44319/Students/GetAllLectureByTeacherId?searchTerm=' + searchTerm);
+        const res = await axios.get('https://onlinetutoring.azurewebsites.net/Students/GetAllLectureByTeacherId?searchTerm=' + searchTerm);
         setCourses(res.data)
       } catch (ex) {
         setCourses(null);
